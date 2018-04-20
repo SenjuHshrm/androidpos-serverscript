@@ -1,7 +1,7 @@
 <?php
   $servername = "192.168.143.24";
   $username = "it_admin_pylon";
-  $password = "unknown192";
+  $password = "2014adamistrative2015";
   $dbname = "market_db";
   try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
