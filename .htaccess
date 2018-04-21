@@ -1,0 +1,6 @@
+RewriteEngine On
+
+RewriteRule ^connection-test/?$  CheckConnection.inc.php [NC,L]
+RewriteRule ^login/?$ login.inc.php [NC,L]
+#RewriteRule ^get-stall-data/([a-zA-Z0-9]+)/?$  getStallInfo.inc.php?info=$1 [NC,L]
+RewriteRule ^save-transaction/?$  SavePayment.inc.php [NC,L]
