@@ -2,8 +2,13 @@
 if(isset($_GET['info'])){
   $ReqData = $_GET['info'];
   $result = array();
-  $result = fetchInfo(explode(" ",$ReqData));
-  echo json_encode($result);
+	$response = array();
+	$result = explode(" ",$ReqData);
+	if(count($result) == 1){
+		$result[1] = " ";
+	}
+	$response = fetchInfo($result);
+  echo json_encode($response);
 }
 
 function fetchInfo($info){

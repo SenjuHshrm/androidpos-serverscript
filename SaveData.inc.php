@@ -2,9 +2,10 @@
   function SavePaymentData($type,$owner,$business,$payment,$collector){
     include 'config.inc.php';
     $ResponseData = '';
+		$CurrDate = date('m/d/Y');
     $UsrId = explode(" ", $collector);
     $CusId = explode(" ", $owner);
-    $sql = 'CALL POS_SaveTransaction(:UsrFirst,:UsrLast,:CusFirst,:CusLast,:Payment,:CollName)';
+    $sql = 'CALL POS_SaveTransaction(:UsrFirst,:UsrLast,:CusFirst,:CusLast,:Payment,:CollName,:Eff)';
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':UsrFirst',$UsrId[0],PDO::PARAM_STR);
     $stmt->bindParam(':UsrLast',$UsrId[1],PDO::PARAM_STR);
@@ -12,6 +13,7 @@
     $stmt->bindParam(':CusLast',$CusId[1],PDO::PARAM_STR);
     $stmt->bindParam(':Payment',$payment,PDO::PARAM_STR);
     $stmt->bindParam(':CollName',$collector,PDO::PARAM_STR);
+		$stmt->bindParam(':Eff',$CurrDate,PDO::PARAM_STR);
     $stmt->execute();
     if($stmt->rowCount()){
       $result = $stmt->fetchAll();
