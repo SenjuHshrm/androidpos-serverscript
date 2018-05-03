@@ -1,5 +1,5 @@
 <?php
-  $servername = "192.168.143.217";
+  $servername = "192.168.143.24";
   $username = "it_admin_pylon";
   $password = "2014adamistrative2015";
   $dbname = "market_db";
