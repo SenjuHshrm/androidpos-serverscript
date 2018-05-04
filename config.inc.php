@@ -1,5 +1,5 @@
 <?php
-  $servername = "192.168.143.24";
+  $servername = "192.168.143.217";
   $username = "it_admin_pylon";
   $password = "2014adamistrative2015";
   $dbname = "market_db";
@@ -9,5 +9,4 @@
   } catch(PDOException $e) {
       die("OOPs something went wrong");
   }
-
 ?>
