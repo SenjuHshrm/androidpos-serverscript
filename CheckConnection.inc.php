@@ -1,6 +1,6 @@
 <?php
+	include $_SERVER['DOCUMENT_ROOT'].'/config/config.inc.php';
   try{
-    include 'config.inc.php';
     $response = "";
     $sql = "SHOW TABLES FROM market_db";
     $stmt = $conn->prepare($sql);
