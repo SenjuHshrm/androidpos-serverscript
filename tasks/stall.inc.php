@@ -1,7 +1,9 @@
 <?php
 	class GetStall {
 		public function fetchInfo($stall){
-			include $_SERVER['DOCUMENT_ROOT'].'/config/config.inc.php';
+			require $_SERVER['DOCUMENT_ROOT'].'/config/config.inc.php';
+			$CreateConn = new DBConnect;
+			$conn = $CreateConn->dbConn();
 			$xrRes = array();
 			$sql = 'CALL POS_fetchStallInfo(:stallNum)';
 			$stmt = $conn->prepare($sql);

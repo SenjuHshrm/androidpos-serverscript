@@ -1,8 +1,10 @@
 <?php
 class LocalStrat {
 		public function AuthLogin($authUser, $authPass){
-			include $_SERVER['DOCUMENT_ROOT'].'/config/config.inc.php';
+			require_once $_SERVER['DOCUMENT_ROOT'].'/config/config.inc.php';
 			$GetPass = 'CALL POS_AuthLogin(:username)';
+			$CreateConn = new DBConnect;
+			$conn = $CreateConn->dbConn();
 			$xhrResponse = array();
 			$resObj = new stdClass();
 			$stmt = $conn->prepare($GetPass);
@@ -31,7 +33,9 @@ class LocalStrat {
 		}
 
 		private function GetDeviceUser($authUser, $authPass){
-			include $_SERVER['DOCUMENT_ROOT'].'/config/config.inc.php';
+			require_once $_SERVER['DOCUMENT_ROOT'].'/config/config.inc.php';
+			$CreateConn = new DBConnect;
+			$conn = $CreateConn->dbConn();
 			$GetUser = 'CALL POS_GetDeviceUser(:username, :password)';
 			$stmt = $conn->prepare($GetUser);
 			$fullname = array();

@@ -1,7 +1,9 @@
 <?php
 	class ProcessTransaction {
 		public function process($customerid, $payment, $collectorID, $collectorName){
-			include $_SERVER['DOCUMENT_ROOT'].'/config/config.inc.php';
+			require_once $_SERVER['DOCUMENT_ROOT'].'/config/config.inc.php';
+			$CreateConn = new DBConnect;
+			$conn = $CreateConn->dbConn();
 			$TransactionNumber = '';
 			$CurrentDate = date('m/d/Y');
 			$sql = 'CALL POS_SaveTransaction(:custID, :payment, :collectorID, :collectorName, :effDate)';
@@ -23,7 +25,9 @@
 			return $TransactionNumber;
 		}
 		private function generate_transaction_num($id){
-			include $_SERVER['DOCUMENT_ROOT'].'/config/config.inc.php';
+			require_once $_SERVER['DOCUMENT_ROOT'].'/config/config.inc.php';
+			$CreateConn = new DBConnect;
+			$conn = $CreateConn->dbConn();
 			$ORNum = '';
 			$idLen = strlen($id);
 			$TRNum = 9 - $idLen;

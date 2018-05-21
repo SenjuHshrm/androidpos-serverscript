@@ -11,7 +11,9 @@
 			return $res;
 		}
 		private function fetchInfo($info){
-			include $_SERVER['DOCUMENT_ROOT'].'/config/config.inc.php';
+			require $_SERVER['DOCUMENT_ROOT'].'/config/config.inc.php';
+			$CreateConn = new DBConnect;
+			$conn = $CreateConn->dbConn();
 			$xhrRes = array();
 			$sql = 'CALL POS_fetchAmbInfo(:firstname, :lastname)';
 			$stmt = $conn->prepare($sql);
