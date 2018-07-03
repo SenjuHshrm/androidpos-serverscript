@@ -9,7 +9,7 @@
 			$stmt = $conn->prepare($sql);
 			$stmt->bindParam(':stallNum', $stall, PDO::PARAM_STR);
 			$stmt->execute();
-			while($res = $stmt->fetch(PDO::PARAM_STR)){
+			while($res = $stmt->fetch(PDO::FETCH_ASSOC)){
 				$xrRes['STALL_RES'][] = $res;
 			}
 			return $xrRes;
