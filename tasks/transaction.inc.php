@@ -33,15 +33,22 @@
 			$TRNum = 9 - $idLen;
 			$TrnGen = 'M';
 			$sql = 'CALL POS_SaveTransactionNumber(:TransactionNum,:ID)';
-			for($x= 0; $x < $TRNum; $x++){
-				$TrnGen = $TrnGen . '0';
+			if($idLen <= 9){
+				for($x= 0; $x < $TRNum; $x++){
+					$TrnGen = $TrnGen . '0';
+				}
+				$ORNum = $TrnGen . $id;
+			} else {
+				$Index = ($idLen - 9) - 1;
+				$idOR = substr($id, $Index);
+				$ORNum = $TrnGen . $idOR;
 			}
-			$ORNum = $TrnGen . $id;
 			$stmt = $conn->prepare($sql);
 			$stmt->bindParam(':TransactionNum', $ORNum, PDO::PARAM_STR);
 			$stmt->bindParam(':ID', $id, PDO::PARAM_STR);
 			$stmt->execute();
 			return $ORNum;
 		}
+
 	}
 ?>
