@@ -39,8 +39,7 @@
 				}
 				$ORNum = $TrnGen . $id;
 			} else {
-				$Index = ($idLen - 9) - 1;
-				$idOR = substr($id, $Index);
+				$idOR = substr(strval($id), -9);
 				$ORNum = $TrnGen . $idOR;
 			}
 			$stmt = $conn->prepare($sql);
