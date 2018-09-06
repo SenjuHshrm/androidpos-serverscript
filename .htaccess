@@ -3,7 +3,7 @@ RewriteEngine On
 RewriteRule ^connection-test/?$  CheckConnection.inc.php  [NC,L]
 RewriteRule ^login/?$ login.inc.php [NC,L]
 RewriteRule ^save-transaction/?$  SavePayment.inc.php [NC,L]
-RewriteRule ^get-info/stall/([\-0-9a-zA-Z]+)/?$ getStallInfo.inc.php?info=$1  [NC,L]
+RewriteRule ^get-info/stall/([\-0-9a-zA-Z#]+)/?$ getStallInfo.inc.php?info=$1  [B,NC,NE,L]
 RewriteRule ^get-info/ambulant/([A-Za-z\s]+)/?$ getAmbulantInfo.inc.php?info=$1  [NC,L]
 RewriteRule ^search/stall/([A-Za-z\s]+)/?$ search-stall.inc.php?name=$1 [NC,L]
 RewriteRule ^save-info/?$ update-info.inc.php [NC,L]
