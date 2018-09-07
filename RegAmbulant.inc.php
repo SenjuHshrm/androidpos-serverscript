@@ -9,8 +9,9 @@
    $FName = $JSONData->FirstName;
    $MName = $JSONData->MiddleName;
    $LName = $JSONData->LastName;
+   $business = $JSONData->BusinessType;
    $loc = $JSONData->Location;
    $locNum = $JSONData->LocationNumber;
-   $response_data = $ProReg->proc_reg($FName, $MName, $LName, $loc, $locNum);
+   $response_data = $ProReg->proc_reg($FName, $MName, $LName, $business, $loc, $locNum);
    echo $response_data;
 ?>
