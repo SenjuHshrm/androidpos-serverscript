@@ -3,6 +3,6 @@
 	$task = new GetAmbulant;
 	$data = $_GET['info'];
 	$result = array();
-	$result = $task->processReq($data);
+	$result = $task->fetchInfo($data);
 	echo json_encode($result);
 ?>
